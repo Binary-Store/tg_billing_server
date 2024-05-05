@@ -1,0 +1,33 @@
+{
+  "name": "tg_billing_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "docs": "npx swagger-jsdoc ./src/components/**/*.route.js -d docs/api/swagger.yaml -o docs/api/openApiSpecs.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-validation": "^4.1.0",
+    "joi": "^17.13.1",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.11.5",
+    "swagger-jsdoc": "^6.2.8",
+    "winston": "^3.13.0"
+  },
+  "devDependencies": {
+    "dbmate": "^2.15.0",
+    "eslint-config-airbnb-base": "^15.0.0"
+  }
+}
