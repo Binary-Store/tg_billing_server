@@ -17,6 +17,9 @@ list:
       quantity:
         type: integer
         description: Product quantity
+      description:
+        type: string
+        description: Product description
 
 create:
   request:
@@ -34,6 +37,9 @@ create:
       quantity:
         type: integer
         description: Product quantity
+      description:
+        type: string
+        description: Product description
   response:
     type: object
     properties:
@@ -52,6 +58,9 @@ create:
       quantity:
         type: integer
         description: Product quantity
+      description:
+        type: string
+        description: Product description
 
 getById:
   response:
@@ -72,6 +81,9 @@ getById:
       quantity:
         type: integer
         description: Product quantity
+      description:
+        type: string
+        description: Product description
 
 update:
   request:
@@ -89,3 +101,6 @@ update:
       quantity:
         type: integer
         description: Product quantity
+      description:
+        type: string
+        description: Product description
