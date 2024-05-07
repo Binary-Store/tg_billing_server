@@ -1,15 +1,18 @@
 const { Parameter } = require('../../utility/queryBuilder');
 
 exports.create = async (dbClient, requestUserId, data) => {
-  const { name, price, code, quantity } = data;
+  const { name, price, code, quantity, description } = data;
+
   const sqlStmt = `
     INSERT INTO product 
-      ("userId", "code", "name", "price", "quantity")
+      ("userId", "code", "name", "price", "quantity", "description")
     VALUES 
-      ($1, $2, $3, $4, $5)
-    RETURNING "id", "code", "name", "price"::FLOAT, "quantity", "createdAt";
+      ($1, $2, $3, $4, $5, $6)
+    RETURNING "id", "code", "name", "price"::FLOAT, "quantity", "description", "createdAt";
   `;
-  const params = [requestUserId, code, name, price, quantity];
+
+  const params = [requestUserId, code, name, price, quantity, description];
+
   const result = await dbClient.query(sqlStmt, params);
   return result.rows[0];
 };
@@ -30,7 +33,7 @@ exports.list = async (dbClient, requestUserId, limit, offset, search) => {
 
   const sqlStmt = `
     SELECT
-      "id", "code", "name", "price"::FLOAT, "quantity", "createdAt"
+      "id", "code", "name", "price"::FLOAT, "quantity", "description", "createdAt"
     FROM product
     WHERE
       "userId" = ${pm.di(requestUserId)}
@@ -47,7 +50,7 @@ exports.list = async (dbClient, requestUserId, limit, offset, search) => {
 exports.getById = async (dbClient, requestUserId, productId) => {
   const sqlStmt = `
     SELECT
-      "id", "code", "name", "price"::FLOAT, "quantity", "createdAt"
+      "id", "code", "name", "price"::FLOAT, "quantity", "description", "createdAt"
     FROM product
     WHERE
       "id" = $1
@@ -59,7 +62,7 @@ exports.getById = async (dbClient, requestUserId, productId) => {
 };
 
 exports.update = async (dbClient, requestUserId, productId, timeStamp, data) => {
-  const { name, price, code, quantity } = data;
+  const { name, price, code, quantity, description } = data;
   const sqlStmt = `
     UPDATE "product"
     SET
@@ -67,12 +70,13 @@ exports.update = async (dbClient, requestUserId, productId, timeStamp, data) => 
       "name" = $2,
       "price" = $3,
       "quantity" = $4,
-      "updatedAt" = $5
+      "description" = $5,
+      "updatedAt" = $6
     WHERE
-      "id" = $6
-      AND "userId" = $7;
+      "id" = $7
+      AND "userId" = $8;
   `;
-  const params = [code, name, price, quantity, timeStamp, productId, requestUserId];
+  const params = [code, name, price, quantity, description, timeStamp, productId, requestUserId];
   await dbClient.query(sqlStmt, params);
 };
 

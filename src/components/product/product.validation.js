@@ -9,6 +9,7 @@ module.exports = {
       name: Joi.string().max(100).required(),
       price: Joi.number().required(),
       quantity: Joi.number().integer().required(),
+      description: Joi.string().max(500),
     }).options({ allowUnknown: false }),
   },
 
@@ -32,6 +33,7 @@ module.exports = {
       name: Joi.string().max(100).required(),
       price: Joi.number().required(),
       quantity: Joi.number().integer().required(),
+      description: Joi.string().max(500),
     }).options({ allowUnknown: false }),
   },
 
