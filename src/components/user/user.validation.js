@@ -13,7 +13,7 @@ module.exports = {
 
   login: {
     body: Joi.object({
-      email: Joi.string().email().required(),
+      email: Joi.alternatives().try(Joi.string().email(), Joi.string().min(10).max(10)).required(),
       password: Joi.string().min(6).max(25).required(),
     }),
   },

@@ -3,8 +3,9 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const Logger = require('./lib/logger');
-const errorHandler = require('./utils/errorHandler');
+const errorHandler = require('./utility/errorHandler');
 const apiRoutes = require('./components/routes');
+const parseUser = require('./middleware/parseUser');
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
+app.use(parseUser);
 
 // Health check route to verify if the server is running or not
 app.get('/health', (req, res) => {

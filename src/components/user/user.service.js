@@ -38,7 +38,7 @@ exports.login = async (email, password) => {
   let user;
 
   try {
-    user = await Dal.getByEmail(dbClient, email);
+    user = await Dal.getByEmailOrPhone(dbClient, email);
   } finally {
     dbClient.release();
   }
