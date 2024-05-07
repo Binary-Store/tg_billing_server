@@ -1,13 +1,13 @@
 const express = require('express');
 const Controller = require('./user.controller');
-const { validate } = require('../../utils/validationHelper');
+const { validate } = require('../../utility/validationHelper');
 const validation = require('./user.validation');
 
 const router = express.Router();
 
 /**
  * @swagger
- * /user/register:
+ * /users/register:
  *   post:
  *     tags:
  *       - User
@@ -32,7 +32,7 @@ router.route('/register')
 
 /**
  * @swagger
- * /user/login:
+ * /users/login:
  *   post:
  *     tags:
  *       - User

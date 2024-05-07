@@ -1,0 +1,91 @@
+list:
+  response:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Product ID
+      name:
+        type: string
+        description: Product name
+      code:
+        type: string
+        description: Product code
+      price:
+        type: number
+        description: Product price
+      quantity:
+        type: integer
+        description: Product quantity
+
+create:
+  request:
+    type: object
+    properties:
+      name:
+        type: string
+        description: Product name
+      code:
+        type: string
+        description: Product code
+      price:
+        type: number
+        description: Product price
+      quantity:
+        type: integer
+        description: Product quantity
+  response:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Product ID
+      name:
+        type: string
+        description: Product name
+      code:
+        type: string
+        description: Product code
+      price:
+        type: number
+        description: Product price
+      quantity:
+        type: integer
+        description: Product quantity
+
+getById:
+  response:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Product ID
+      name:
+        type: string
+        description: Product name
+      code:
+        type: string
+        description: Product code
+      price:
+        type: number
+        description: Product price
+      quantity:
+        type: integer
+        description: Product quantity
+
+update:
+  request:
+    type: object
+    properties:
+      name:
+        type: string
+        description: Product name
+      code:
+        type: string
+        description: Product code
+      price:
+        type: number
+        description: Product price
+      quantity:
+        type: integer
+        description: Product quantity

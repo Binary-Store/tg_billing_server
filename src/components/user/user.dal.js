@@ -12,13 +12,13 @@ exports.create = async (dbClient, name, email, phone, password, timeStamp) => {
   return result.rows[0];
 };
 
-exports.getByEmail = async (dbClient, email) => {
+exports.getByEmailOrPhone = async (dbClient, email) => {
   const sqlStmt = `
     SELECT
       "id", "name", "email", "phone", "password"
     FROM "user" 
     WHERE 
-      "email" = $1;
+      "email" = $1 OR "phone" = $1;
   `;
   const params = [email];
   const result = await dbClient.query(sqlStmt, params);
